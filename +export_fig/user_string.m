@@ -32,6 +32,7 @@ function string = user_string(string_name, string)
 % 10/01/2013 - Access files in text, not binary mode, as latter can cause
 %              errors. Thanks to Christian for pointing this out.
 % 29/05/2015 - Save file in prefdir if current folder is non-writable (issue #74)
+    import export_fig.*
 
     if ~ischar(string_name)
         error('string_name must be a string.');
