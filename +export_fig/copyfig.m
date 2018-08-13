@@ -18,6 +18,7 @@ function fh = copyfig(fh)
 % 26/02/15: If temp dir is not writable, use the dest folder for temp
 %           destination files (Javier Paredes)
 % 15/04/15: Suppress warnings during copyobj (Dun Kirk comment on FEX page 2013-10-02)
+    import export_fig.*
 
     % Set the default
     if nargin == 0

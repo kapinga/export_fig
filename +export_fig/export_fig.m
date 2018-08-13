@@ -267,6 +267,7 @@ function [imageData, alpha] = export_fig(varargin) %#ok<*STRCL1>
 % 29/05/18: Fixed issue #245: process "string" inputs just like 'char' inputs
 % 13/08/18: Fixed issue #249: correct black axes color to off-black to avoid extra cropping with -transparent
 %}
+    import export_fig.*
 
     if nargout
         [imageData, alpha] = deal([]);
@@ -969,6 +970,7 @@ function options = default_options()
 end
 
 function [fig, options] = parse_args(nout, fig, varargin)
+    import export_fig.*
     % Parse the input arguments
 
     % Convert strings => chars
@@ -1264,6 +1266,7 @@ function value = str2char(value)
 end
 
 function A = downsize(A, factor)
+    import export_fig.*
     % Downsample an image
     if factor == 1
         % Nothing to do
@@ -1291,10 +1294,12 @@ function A = downsize(A, factor)
 end
 
 function A = rgb2grey(A)
+    import export_fig.*
     A = cast(reshape(reshape(single(A), [], 3) * single([0.299; 0.587; 0.114]), size(A, 1), size(A, 2)), class(A)); % #ok<ZEROLIKE>
 end
 
 function A = check_greyscale(A)
+    import export_fig.*
     % Check if the image is greyscale
     if size(A, 3) == 3 && ...
             all(reshape(A(:,:,1) == A(:,:,2), [], 1)) && ...
@@ -1304,6 +1309,7 @@ function A = check_greyscale(A)
 end
 
 function eps_remove_background(fname, count)
+    import export_fig.*
     % Remove the background of an eps file
     % Open the file
     fh = fopen(fname, 'r+');
@@ -1332,21 +1338,25 @@ function eps_remove_background(fname, count)
 end
 
 function b = isvector(options)
+    import export_fig.*
     b = options.pdf || options.eps;
 end
 
 function b = isbitmap(options)
+    import export_fig.*
     b = options.png || options.tif || options.jpg || options.bmp || options.im || options.alpha;
 end
 
 % Helper function
 function A = make_cell(A)
+    import export_fig.*
     if ~iscell(A)
         A = {A};
     end
 end
 
 function add_bookmark(fname, bookmark_text)
+    import export_fig.*
     % Adds a bookmark to the temporary EPS file after %%EndPageSetup
     % Read in the file
     fh = fopen(fname, 'r');
@@ -1381,6 +1391,7 @@ function add_bookmark(fname, bookmark_text)
 end
 
 function set_tick_mode(Hlims, ax)
+    import export_fig.*
     % Set the tick mode of linear axes to manual
     % Leave log axes alone as these are tricky
     M = get(Hlims, [ax 'Scale']);
@@ -1419,6 +1430,7 @@ function set_tick_mode(Hlims, ax)
 end
 
 function change_rgb_to_cmyk(fname)  % convert RGB => CMYK within an EPS file
+    import export_fig.*
     % Do post-processing on the eps file
     try
         % Read the EPS file into memory

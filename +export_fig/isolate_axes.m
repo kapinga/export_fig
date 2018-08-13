@@ -30,6 +30,7 @@ function fh = isolate_axes(ah, vis)
 % 21/04/15: Bug fix for exporting uipanels with legend/colorbar on HG1 (reported by Alvaro
 %           on FEX page as a comment on 24-Apr-2014); standardized indentation & help section
 % 22/04/15: Bug fix: legends and colorbars were not exported when exporting axes handle in HG2
+    import export_fig.*
 
     % Make sure we have an array of handles
     if ~all(ishandle(ah))

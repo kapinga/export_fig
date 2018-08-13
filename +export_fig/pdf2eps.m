@@ -21,6 +21,7 @@
 % non-existant directories.
 
 function pdf2eps(source, dest)
+import export_fig.*
 % Construct the options string for pdftops
 options = ['-q -paper match -eps -level2 "' source '" "' dest '"'];
 % Convert to eps using pdftops

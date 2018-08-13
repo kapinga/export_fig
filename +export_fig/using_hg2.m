@@ -13,6 +13,7 @@
 % 06/06/2016 - Fixed issue #156 (bad return value in R2016b)
 
 function tf = using_hg2(fig)
+    import export_fig.*
     persistent tf_cached
     if isempty(tf_cached)
         try

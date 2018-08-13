@@ -98,6 +98,7 @@ function print2eps(name, fig, export_options, varargin)
 % 18/11/17: Fixed issue #225: transparent/translucent dashed/dotted lines appear solid in EPS/PDF
 % 24/03/18: Fixed issue #239: black title meshes with temporary black background figure bgcolor, causing bad cropping
 %}
+    import export_fig.*
 
     options = {'-loose'};
     if nargin > 3
@@ -542,6 +543,7 @@ function print2eps(name, fig, export_options, varargin)
 end
 
 function [StoredColors, fstrm, foundFlags] = eps_maintainAlpha(fig, fstrm, StoredColors)
+    import export_fig.*
     if nargin == 1  % in: convert transparency in Matlab figure into unique RGB colors
         hObjs = findall(fig); %findobj(fig,'Type','Area');
         StoredColors = {};

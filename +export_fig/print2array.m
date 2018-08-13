@@ -53,6 +53,7 @@ function [A, bcol] = print2array(fig, res, renderer, gs_options)
 %}
 
     % Generate default input arguments, if needed
+    import export_fig.*
     if nargin < 2
         res = 1;
         if nargin < 1
@@ -236,6 +237,7 @@ end
 
 % Function to return (and create, where necessary) the font path
 function fp = font_path()
+    import export_fig.*
     fp = user_string('gs_font_path');
     if ~isempty(fp)
         return

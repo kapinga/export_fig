@@ -43,6 +43,10 @@ function varargout = ghostscript(cmd)
 % 10/11/15 - Custom GS installation webpage for MacOS. Thanks to Andy Hueni via FEX
 %}
 
+
+
+    import export_fig.*
+
     try
         % Call ghostscript
         [varargout{1:nargout}] = system([gs_command(gs_path()) cmd]);
@@ -69,6 +73,7 @@ function varargout = ghostscript(cmd)
 end
 
 function path_ = gs_path
+    import export_fig.*
     % Return a valid path
     % Start with the currently set path
     path_ = user_string('ghostscript');
@@ -156,6 +161,7 @@ function path_ = gs_path
 end
 
 function good = check_store_gs_path(path_)
+    import export_fig.*
     % Check the path is valid
     good = check_gs_path(path_);
     if ~good
@@ -171,6 +177,7 @@ end
 
 function good = check_gs_path(path_)
     persistent isOk
+    import export_fig.*
     if isempty(path_)
         isOk = false;
     elseif ~isequal(isOk,true)
@@ -182,6 +189,7 @@ function good = check_gs_path(path_)
 end
 
 function cmd = gs_command(path_)
+    import export_fig.*
     % Initialize any required system calls before calling ghostscript
     % TODO: in Unix/Mac, find a way to determine whether to use "export" (bash) or "setenv" (csh/tcsh)
     shell_cmd = '';

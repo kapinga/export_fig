@@ -46,6 +46,7 @@
 %}
 
 function im2gif(A, varargin)
+import export_fig.*
 
 % Parse the input arguments
 [A, options] = parse_args(A, varargin{:});
@@ -99,6 +100,7 @@ end
 
 %% Parse the input arguments
 function [A, options] = parse_args(A, varargin)
+import export_fig.*
 % Set the defaults
 options = struct('outfile', '', ...
                  'dither', true, ...
@@ -154,6 +156,7 @@ end
 
 %% Read image to uint8 rgb array
 function [A, alpha] = imread_rgb(name)
+import export_fig.*
 % Get file info
 info = imfinfo(name);
 % Special case formats

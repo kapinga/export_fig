@@ -33,6 +33,7 @@ function string = user_string(string_name, string)
 %              errors. Thanks to Christian for pointing this out.
 % 29/05/2015 - Save file in prefdir if current folder is non-writable (issue #74)
 % 09/01/2018 - Fix issue #232: if the string looks like a file/folder path, ensure it actually exists
+    import export_fig.*
 
     if ~ischar(string_name)
         error('string_name must be a string.');
