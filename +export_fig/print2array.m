@@ -208,6 +208,7 @@ end
 
 % Function to create a TIF image of the figure and read it into an array
 function [A, err, ex] = read_tif_img(fig, res_str, renderer, tmp_nam)
+    import export_fig.*
     err = false;
     ex = [];
     % Temporarily set the paper size
